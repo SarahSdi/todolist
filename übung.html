@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #square {
+            background:gray;
+            width:200px;
+            height:200px;
+        }
+        #square.red {
+            background:red;
+        }
+    </style>
+</head>
+<body>
+   <div id="square"></div>
+   <button onclick="addClass('red')">add class</button> 
+   <button onclick="removeClass('red')">remove class</button>
+
+   <script>
+    function addClass(color){
+    var squareElement = document.getElementById("square")
+    squareElement.classList.add(color)
+    squareElement.innerHTML = "Class added"
+    squareElement.style.color = "white"
+    squareElement.style.textAlign = "center"
+    
+    }
+    function removeClass(color){
+        var squareElement = document.getElementById("square")
+        squareElement.classList.remove(color)
+        squareElement.innerHTML = "removed class"
+    }
+   </script>
+</body>
+</html>

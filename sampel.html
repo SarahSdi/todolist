@@ -1,0 +1,63 @@
+color: rgb(237, 102, 217);
+}
+</style>
+
+</head>
+<body>
+
+<div id="todo-list">
+<h1>TODO LIST</h1>
+<div id="input-btn">
+    <input type="text" id="input" placeholder="Please enter a task ">
+    <button id="btn-add">add</button>
+</div>
+    <ul id="ul">
+    </ul>
+</div>
+
+<script>
+var lst = document.getElementById('ul');
+var btnAddElement = document.getElementById('btn-add');
+var inputTextElement = document.getElementById('input');
+lst.addEventListener('click', function(event) {
+if (event.target.tagName === 'LI') {
+    event.target.classList.toggle('close');
+}
+});
+
+function addTask() {
+var inputTextElement = document.getElementById('input');
+var ulElement = document.getElementById('ul');
+var liElement = document.createElement('li');
+// liElement.classList()
+var spanElement = document.createElement('span');
+var setDate = document.createElement('p');
+setDate.classList.add('date');
+const d = new Date();
+let text = d.toDateString();
+setDate.innerHTML = text;
+
+if(inputTextElement.value.length > 3) {
+    liElement.innerHTML = inputTextElement.value;
+    liElement.appendChild(spanElement);
+    liElement.appendChild(setDate);
+    ulElement.appendChild(liElement);
+    inputTextElement.value = '';
+} else {
+    alert('Please enter at least 4 characters')
+}
+spanElement.addEventListener('click',function deleteBtn(){
+    liElement.remove();
+});
+}
+
+btnAddElement.addEventListener('click', addTask);
+inputTextElement.addEventListener('keypress', (event) => {
+if(event.which === 13) {
+   addTask();
+}
+})
+
+</script>
+</body>
+</html>

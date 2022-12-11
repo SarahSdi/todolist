@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todolist</title>
+    <style>
+      *,*:after,*:before {
+    box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+      }
+    .clearfix {
+    display:table;
+    content:"";
+    clear: both;
+      }
+      body {
+        margin:0;
+      }
+      ul,li {
+        margin:0;
+        padding:0;
+      }
+      .cover {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:10px 0;
+}
+.container{
+    width:500px;
+    height:auto;
+    background-color:rosybrown;
+    text-align:center;
+}
+h1{
+    color:#fff;
+    font-weight: 500px;
+}
+ul{
+    margin:10px 5px 15px 0;
+}
+
+@media only screen and (max-width: 520px) {
+    .container {
+        width:450px;
+    }
+  }
+    </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="container">
+      <h1>To do list</h1>
+    <input type="text" id="text" placeholder="Bitte geben Sie die Aufgabe ein" />
+    <button id="inhalt" onclick="hinZuFügen()"> hinzufügen </button>
+    <ul id="task"> </ul>
+  </div>
+  </div>
+
+    <script>
+        function hinZuFügen() {
+          var inputElement = document.getElementById("text");
+
+          if(inputElement.value.length > 0 ){
+          var ulElement = document.getElementById("task");
+          var liElement = document.createElement("li");
+          
+          liElement.innerHTML= inputElement.value;
+          ulElement.appendChild(liElement);
+          var löschen = document.createElement("button")
+          löschen.innerHTML = " x ";
+          liElement.appendChild(löschen);
+          löschen.addEventListener("click" , löschen);
+          function löschen() {
+            liElement.remove();
+          }
+          inputElement.value = "";
+          } else{
+            alert("Aufgabe ist leer");
+          }
+        
+        </script>
+</body>
+</html>
